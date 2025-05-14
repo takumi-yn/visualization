@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib as mpl
 import os
 
-font_path = os.path.join(os.getcwd(), "fonts/NotoSansJP-Regular.otf")
+font_path = os.path.join(os.getcwd(), "fonts/NotoSansJP-Regular.ttf")
 if os.path.exists(font_path):
     fm.fontManager.addfont(font_path)
     mpl.rcParams['font.family'] = 'Noto Sans JP'
