@@ -9,12 +9,15 @@ import matplotlib as mpl
 import os
 import matplotlib.font_manager as fm
 
-font_path = os.path.join(os.getcwd(), "fonts/NotoSansJP-Regular.ttf")
-if os.path.exists(font_path):
-    fm.fontManager.addfont(font_path)
+# フォントのパス（相対パスで指定）
+FONT_PATH = os.path.join(os.getcwd(), "fonts/NotoSansJP-Regular.ttf")
+
+# 存在確認と読み込み
+if os.path.exists(FONT_PATH):
+    fm.fontManager.addfont(FONT_PATH)
     mpl.rcParams['font.family'] = 'Noto Sans JP'
 else:
-    st.error(f"フォントが見つかりません: {font_path}")
+    FONT_PATH = None
 
 # --- Streamlit設定 ---
 st.set_page_config(layout="wide")
