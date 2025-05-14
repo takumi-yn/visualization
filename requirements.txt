@@ -1,8 +1,6 @@
-setuptools>=60
 streamlit
 pandas
 matplotlib
 seaborn
 wordcloud
 janome==0.4.2
-matplotlib-font-ja
