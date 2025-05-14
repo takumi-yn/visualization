@@ -7,9 +7,7 @@ from janome.tokenizer import Tokenizer
 import numpy as np
 from matplotlib import font_manager
 import matplotlib as mpl
-
-# 日本語フォントを手動で指定（ヒラギノ or Noto Sans CJKなど）
-mpl.rcParams['font.family'] = 'Noto Sans CJK JP'
+import matplotlib-fontja
 
 FONT_PATH = "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc"
 
