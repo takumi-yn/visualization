@@ -4,3 +4,4 @@ matplotlib
 seaborn
 wordcloud
 janome==0.4.2
+setuptools>=60
