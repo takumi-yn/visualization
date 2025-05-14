@@ -7,6 +7,7 @@ from janome.tokenizer import Tokenizer
 import numpy as np
 import matplotlib as mpl
 import os
+import matplotlib.font_manager as fm
 
 font_path = os.path.join(os.getcwd(), "fonts/NotoSansJP-Regular.ttf")
 if os.path.exists(font_path):
