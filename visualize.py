@@ -7,7 +7,6 @@ from janome.tokenizer import Tokenizer
 import numpy as np
 from matplotlib import font_manager
 import matplotlib as mpl
-import matplotlib-fontja
 
 FONT_PATH = "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc"
 
