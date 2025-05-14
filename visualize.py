@@ -8,11 +8,12 @@ import numpy as np
 import matplotlib as mpl
 import os
 
-# --- フォント設定 ---
-CLOUD_FONT = "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc"
-MAC_FONT = "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc"
-FONT_PATH = CLOUD_FONT if os.path.exists(CLOUD_FONT) else MAC_FONT
-mpl.rcParams['font.family'] = 'Noto Sans CJK JP'
+font_path = os.path.join(os.getcwd(), "fonts/NotoSansJP-Regular.otf")
+if os.path.exists(font_path):
+    fm.fontManager.addfont(font_path)
+    mpl.rcParams['font.family'] = 'Noto Sans JP'
+else:
+    st.error(f"フォントが見つかりません: {font_path}")
 
 # --- Streamlit設定 ---
 st.set_page_config(layout="wide")
