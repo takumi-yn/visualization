@@ -5,11 +5,17 @@ import seaborn as sns
 from wordcloud import WordCloud, STOPWORDS
 from janome.tokenizer import Tokenizer
 import numpy as np
-from matplotlib import font_manager
 import matplotlib as mpl
+import os
 
-FONT_PATH = "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc"
+# --- フォント設定 ---
+CLOUD_FONT = "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc"
+MAC_FONT = "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc"
+FONT_PATH = CLOUD_FONT if os.path.exists(CLOUD_FONT) else MAC_FONT
 
+mpl.rcParams['font.family'] = 'Noto Sans CJK JP'
+
+# --- Streamlit設定 ---
 st.set_page_config(layout="wide")
 st.title("パルスサーベイ 可視化ダッシュボード")
 
@@ -24,13 +30,7 @@ if uploaded_file:
     df = df.dropna(subset=['年齢'])
     df['年代'] = pd.cut(df['年齢'], bins=[0, 29, 39, 49, 100], labels=['20代', '30代', '40代', '50代'])
 
-    cond_map = {
-        '好調': '好調',
-        'やや好調': 'やや好調',
-        '普通': '普通',
-        'やや不調': 'やや不調',
-        '不調': '不調'
-    }
+    cond_map = {'好調': '好調', 'やや好調': 'やや好調', '普通': '普通', 'やや不調': 'やや不調', '不調': '不調'}
     df['コンディション'] = df['コンディション'].astype(str).str.strip().map(cond_map)
     df = df.dropna(subset=['コンディション'])
 
