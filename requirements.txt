@@ -4,4 +4,4 @@ matplotlib
 seaborn
 wordcloud
 janome
-matplotlib-fontja
+matplotlib-font-ja
