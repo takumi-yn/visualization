@@ -12,7 +12,6 @@ import os
 CLOUD_FONT = "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc"
 MAC_FONT = "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc"
 FONT_PATH = CLOUD_FONT if os.path.exists(CLOUD_FONT) else MAC_FONT
-
 mpl.rcParams['font.family'] = 'Noto Sans CJK JP'
 
 # --- Streamlit設定 ---
@@ -99,17 +98,20 @@ if uploaded_file:
                 and len(token.base_form) > 1
             ]
             word_string = " ".join(words)
-            wordcloud = WordCloud(
-                font_path=FONT_PATH,
-                background_color="white",
-                width=600,
-                height=300,
-                colormap='Greens'
-            ).generate(word_string)
-            fig4, ax4 = plt.subplots(figsize=(7, 4))
-            ax4.imshow(wordcloud, interpolation="bilinear")
-            ax4.axis("off")
-            st.pyplot(fig4)
+            if os.path.exists(FONT_PATH):
+                wordcloud = WordCloud(
+                    font_path=FONT_PATH,
+                    background_color="white",
+                    width=600,
+                    height=300,
+                    colormap='Greens'
+                ).generate(word_string)
+                fig4, ax4 = plt.subplots(figsize=(7, 4))
+                ax4.imshow(wordcloud, interpolation="bilinear")
+                ax4.axis("off")
+                st.pyplot(fig4)
+            else:
+                st.error(f"指定フォントが見つかりません: {FONT_PATH}")
 
     st.subheader("カスタム集計グラフと表")
 
